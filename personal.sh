@@ -2,6 +2,9 @@ function generate_pub_key {
     if ! [ -f ~/.ssh/id_rsa.pub ]; then
         ssh-keygen -t rsa
     fi
+
+    # copy ~/.ssh/id_rsa.pub to bitbucket/github Account SSH Keys -- for personal
+    # copy ~/.ssh/id_rsa.pub to gitlab Account SSH Keys -- for paymaya
 }
 
 function install_applications {
@@ -21,6 +24,7 @@ function install_applications {
     brew install mas
     mas install 408981434 # imovie
     # mas install 497799835 # xcode
+    # sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
     # mas install 1451544217 # lightroom
 }
 
