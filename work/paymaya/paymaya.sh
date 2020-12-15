@@ -29,9 +29,17 @@ function update_git_config {
 }
 
 # work tools
+function boost_dependencies {
+    brew install python # python 3
+    brew install pipenv
+}
+
 function checkout_tools {
     git clone git@code.corp.voyager.ph:Hatch/boost/nodejs-utils.git
     git clone git@code.corp.voyager.ph:chris.bello/mock-api.git
+    git clone git@code.corp.voyager.ph:mico.delossantos/auto-burndown.git
+    git clone git@code.corp.voyager.ph:mico.delossantos/generate_artifacts.git
+    git clone git@code.corp.voyager.ph:mico.delossantos/scripts.git
 }
 
 function tools {
@@ -192,12 +200,21 @@ function promo_dependencies {
     brew install node
     brew install openssl
 
-    if ! [ -x "$(command -v mysql)" ]; then
-        brew install mysql@5.7
-        brew services start mysql@5.7
-        brew link mysql@5.7 --force
-        # setup using mysqladmin
-        # should run using mysql -u root -p
+    if ! [ -d ~/.nvm ]; then
+        brew install nvm
+        mkdir ~/.nvm
+        echo 'export NVM_DIR="$HOME/.nvm"
+        [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+        [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion' >> ~/.zshrc
+        source ~/.zshrc
+        nvm install --lts 12
+        nvm alias default 12
+    fi
+
+    if ! [ -x "$(command -v redis-cli)" ]; then
+        brew install redis
+        brew services start redis
+        # check using redis-cli
     fi
 }
 
@@ -218,9 +235,42 @@ function promo_platform {
     popd
 }
 
+# voucher platform
+function voucher_dependencies {
+    brew install node
+
+    if ! [ -d ~/.nvm ]; then
+        brew install nvm
+        mkdir ~/.nvm
+        echo 'export NVM_DIR="$HOME/.nvm"
+        [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+        [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion' >> ~/.zshrc
+        source ~/.zshrc
+        nvm install --lts 10
+        nvm alias default 10
+    fi
+
+    # TODO: postgres setup
+}
+
+function checkout_voucher_repositories {
+    git clone git@code.corp.voyager.ph:Hatch/boost/voucer-api.git
+}
+
+function voucher_platform {
+    voucher_dependencies
+    mkdir ~/Work/paymaya/voucher-platform
+    pushd ~/Work/paymaya/voucher-platform
+    checkout_voucher_repositories
+    update_git_config $(pwd)
+    popd
+}
+
 # install_work_tools
 # should be connected to vpn
 # tools
 # boost_platform
 # audience_management
 # referral_platform
+# promo_platform
+# voucher_platform
