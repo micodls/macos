@@ -38,3 +38,11 @@ function run_personal_setup {
     ./personal.sh
     popd
 }
+
+function initialize_work {
+    install_dependencies
+    mkdir ~/Work
+    pushd ~/Work
+    ./work/paymaya/paymaya.sh
+    popd
+}

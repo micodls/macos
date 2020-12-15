@@ -1,5 +1,3 @@
-# mkdir ~/Work
-
 function initialize {
     mkdir ~/Work/paymaya
 }
