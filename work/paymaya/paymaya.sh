@@ -31,6 +31,7 @@ function update_git_config {
 # work tools
 function checkout_tools {
     git clone git@code.corp.voyager.ph:Hatch/boost/nodejs-utils.git
+    git clone git@code.corp.voyager.ph:chris.bello/mock-api.git
 }
 
 function tools {
@@ -54,7 +55,6 @@ function boost_dependencies {
         [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion' >> ~/.zshrc
         source ~/.zshrc
         nvm install --lts 8
-        nvm install --lts 10
         nvm install --lts 12
         nvm alias default 12
     fi
@@ -107,10 +107,8 @@ function am_dependencies {
         [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
         [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion' >> ~/.zshrc
         source ~/.zshrc
-        nvm install --lts 8
         nvm install --lts 10
-        nvm install --lts 12
-        nvm alias default 12
+        nvm alias default 10
     fi
 
     if ! [ -x "$(command -v mysql)" ]; then
@@ -145,7 +143,7 @@ function audience_management {
     am_dependencies
     mkdir ~/Work/paymaya/audience-management
     pushd ~/Work/paymaya/audience-management
-    # checkout_am_repositories
+    checkout_am_repositories
     update_git_config $(pwd)
     popd
 }
@@ -161,8 +159,6 @@ function referral_dependencies {
         [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
         [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion' >> ~/.zshrc
         source ~/.zshrc
-        nvm install --lts 8
-        nvm install --lts 10
         nvm install --lts 12
         nvm alias default 12
     fi
@@ -186,7 +182,38 @@ function referral_platform {
     referral_dependencies
     mkdir ~/Work/paymaya/referral-platform
     pushd ~/Work/paymaya/referral-platform
-    # checkout_referral_repositories
+    checkout_referral_repositories
+    update_git_config $(pwd)
+    popd
+}
+
+# promo platform
+function promo_dependencies {
+    brew install node
+    brew install openssl
+
+    if ! [ -x "$(command -v mysql)" ]; then
+        brew install mysql@5.7
+        brew services start mysql@5.7
+        brew link mysql@5.7 --force
+        # setup using mysqladmin
+        # should run using mysql -u root -p
+    fi
+}
+
+function checkout_promo_repositories {
+    git clone git@code.corp.voyager.ph:Hatch/boost/promo-analytics-fetcher.git
+    git clone git@code.corp.voyager.ph:Hatch/boost/promo-event-subscriber.git
+    git clone git@code.corp.voyager.ph:Hatch/boost/promo-sqs-reader.git
+    git clone git@code.corp.voyager.ph:mico.delossantos/promo-platform.git
+    git clone git@code.corp.voyager.ph:mico.delossantos/promo-platform-loader.git
+}
+
+function promo_platform {
+    promo_dependencies
+    mkdir ~/Work/paymaya/promo-platform
+    pushd ~/Work/paymaya/promo-platform
+    checkout_promo_repositories
     update_git_config $(pwd)
     popd
 }
@@ -196,3 +223,4 @@ function referral_platform {
 # tools
 # boost_platform
 # audience_management
+# referral_platform

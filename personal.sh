@@ -14,10 +14,14 @@ function install_applications {
     brew install --cask evernote
     brew install --cask spotify
     brew install --cask google-chrome-canary
+    brew install --cask telegram
     brew install --cask vlc
+    brew install --cask android-file-transfer
 
     brew install mas
-    mas install 408981434 #imovie
+    mas install 408981434 # imovie
+    # mas install 497799835 # xcode
+    # mas install 1451544217 # lightroom
 }
 
 generate_pub_key

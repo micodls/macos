@@ -28,3 +28,6 @@ $ sudo find / -name .DS_Store -delete; killall Finder
 ## Others
 1. Download the following:
    - [Paragon Driver](https://www.seagate.com/as/en/support/software/paragon/)
+   - [Seagate Toolkit](https://www.seagate.com/as/en/support/software/toolkit/)
+2. Checkout the following:
+   - [Aureal](https://github.com/notjosh/Aureal) -- requires xcode
