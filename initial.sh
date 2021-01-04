@@ -43,6 +43,8 @@ function initialize_work {
     install_dependencies
     mkdir ~/Work
     pushd ~/Work
-    ./work/paymaya/paymaya.sh
+    ~/Personal/macos/work/paymaya/paymaya.sh
     popd
 }
+
+initialize_work

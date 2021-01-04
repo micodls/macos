@@ -252,7 +252,9 @@ function voucher_dependencies {
 }
 
 function checkout_voucher_repositories {
-    git clone git@code.corp.voyager.ph:Hatch/boost/voucer-api.git
+    git clone git@code.corp.voyager.ph:Hatch/boost/voucher-api.git
+    git clone git@code.corp.voyager.ph:Hatch/boost/voucher-data.git
+    git clone git@code.corp.voyager.ph:Hatch/boost/voucher-worker.git
 }
 
 function voucher_platform {
@@ -266,9 +268,9 @@ function voucher_platform {
 
 # install_work_tools
 # should be connected to vpn
-# tools
+tools
 # boost_platform
 # audience_management
 # referral_platform
 # promo_platform
-# voucher_platform
+voucher_platform

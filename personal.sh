@@ -22,7 +22,7 @@ function install_applications {
     brew install --cask android-file-transfer
 
     brew install mas
-    mas install 408981434 # imovie
+    # mas install 408981434 # imovie
     # mas install 497799835 # xcode
     # sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
     # mas install 1451544217 # lightroom
