@@ -5,11 +5,13 @@ function initialize {
 function install_work_tools {
     brew install --cask microsoft-outlook
     brew install --cask microsoft-teams
+    brew install --cask microsoft-excel
     brew install --cask postman
 
     brew install awscli
     brew install plantuml
     brew install openconnect
+    brew install ossp-uuid
     # TODO: make bash/macro for this
     # references: https://medium.com/@edgar/use-openconnect-as-a-replacement-for-cisco-anyconnect-vpn-client-in-mac-36eab0812718
     # sudo openconnect --authgroup=OnePaymaya_VPN --user=mico.delossantos vpn.corp.voyager.ph
@@ -27,7 +29,7 @@ function update_git_config {
 }
 
 # work tools
-function boost_dependencies {
+function tools_dependencies {
     brew install python # python 3
     brew install pipenv
 }
@@ -41,6 +43,7 @@ function checkout_tools {
 }
 
 function tools {
+    tools_dependencies
     mkdir ~/Work/paymaya/tools
     pushd ~/Work/paymaya/tools
     checkout_tools
@@ -52,6 +55,8 @@ function tools {
 function boost_dependencies {
     brew install node
     brew install openssl
+    brew install adoptopenjdk # java
+    brew install gnupg
 
     if ! [ -d ~/.nvm ]; then
         brew install nvm
