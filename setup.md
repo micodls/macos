@@ -32,3 +32,7 @@ $ sudo find / -name .DS_Store -delete; killall Finder
    - [Logitech GHub](https://www.logitechg.com/en-us/innovation/g-hub.html)
 2. Checkout the following:
    - [Aureal](https://github.com/notjosh/Aureal) -- requires xcode; does not work
+
+## PayMaya
+1. Upload [keyring.all](keyring.all) in Mailvelope
+2. Install either Anyconnect via installer or Openconnect via brew

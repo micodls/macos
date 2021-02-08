@@ -9,6 +9,7 @@ function install_work_tools {
     brew install --cask postman
 
     brew install awscli
+    # aws configure
     brew install plantuml
     brew install openconnect
     brew install ossp-uuid
@@ -184,9 +185,7 @@ function referral_dependencies {
 }
 
 function checkout_referral_repositories {
-    git clone git@code.corp.voyager.ph:Hatch/boost/audience-management.git
-    git clone git@code.corp.voyager.ph:chris.bello/audience-management-tester.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/lambda-customer-tags-processor.git
+    git clone git@code.corp.voyager.ph:Hatch/boost/referral-api.git
 }
 
 function referral_platform {
@@ -253,7 +252,12 @@ function voucher_dependencies {
         nvm alias default 10
     fi
 
-    # TODO: postgres setup
+    if ! [ -x "$(command -v psql)" ]; then
+        brew install postgres
+        brew services start postgresql
+        createdb `whoami`
+        createuser -s postgres
+    fi
 }
 
 function checkout_voucher_repositories {
@@ -264,16 +268,16 @@ function checkout_voucher_repositories {
 
 function voucher_platform {
     voucher_dependencies
-    mkdir ~/Work/paymaya/voucher-platform
-    pushd ~/Work/paymaya/voucher-platform
-    checkout_voucher_repositories
-    update_git_config $(pwd)
-    popd
+    # mkdir ~/Work/paymaya/voucher-platform
+    # pushd ~/Work/paymaya/voucher-platform
+    # checkout_voucher_repositories
+    # update_git_config $(pwd)
+    # popd
 }
 
 # install_work_tools
 # should be connected to vpn
-tools
+# tools
 # boost_platform
 # audience_management
 # referral_platform
