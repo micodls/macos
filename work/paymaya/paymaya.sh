@@ -5,17 +5,18 @@ function initialize {
 function install_work_tools {
     brew install --cask microsoft-outlook
     brew install --cask microsoft-teams
+    # set to Dark Mode
     brew install --cask microsoft-excel
     brew install --cask postman
 
     brew install awscli
     # aws configure
     brew install plantuml
-    brew install openconnect
     brew install ossp-uuid
+    # brew install openconnect -- uncomment for hackintosh
     # TODO: make bash/macro for this
     # references: https://medium.com/@edgar/use-openconnect-as-a-replacement-for-cisco-anyconnect-vpn-client-in-mac-36eab0812718
-    # sudo openconnect --authgroup=OnePaymaya_VPN --user=mico.delossantos vpn.corp.voyager.ph
+    # command: sudo openconnect --authgroup=OnePaymaya_VPN --user=mico.delossantos vpn.corp.voyager.ph
 }
 
 function update_git_config {
@@ -268,18 +269,19 @@ function checkout_voucher_repositories {
 
 function voucher_platform {
     voucher_dependencies
-    # mkdir ~/Work/paymaya/voucher-platform
-    # pushd ~/Work/paymaya/voucher-platform
-    # checkout_voucher_repositories
-    # update_git_config $(pwd)
-    # popd
+    mkdir ~/Work/paymaya/voucher-platform
+    pushd ~/Work/paymaya/voucher-platform
+    checkout_voucher_repositories
+    update_git_config $(pwd)
+    popd
 }
 
+# initialize
 # install_work_tools
-# should be connected to vpn
-# tools
-# boost_platform
-# audience_management
-# referral_platform
-# promo_platform
+# should be connected to vpn, pubkey must be uploaded to gitlab
+tools
+boost_platform
+audience_management
+referral_platform
+promo_platform
 voucher_platform

@@ -21,7 +21,7 @@ function install_dependencies {
 }
 
 function checkout_personal_repositories {
-    git clone https://micodls@bitbucket.org/micodls/macos.git
+    git clone https://micodls@bitbucket.org/micodls/macos.git # Be ready with Atlassian Password
 }
 
 function initialize_personal {
@@ -47,4 +47,7 @@ function initialize_work {
     popd
 }
 
+# install_homebrew
+# initialize_personal
+# run_personal_setup
 initialize_work

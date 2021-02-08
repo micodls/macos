@@ -12,8 +12,12 @@ function install_applications {
     brew tap homebrew/cask-versions
 
     brew install --cask authy
+    # needs authentication from other installed app (mobile/pc)
     brew install --cask lastpass
-    brew install --cask visual-studio-code # sync settings using extension: settings sync
+    brew install --cask visual-studio-code
+    # sync settings using extension: settings sync
+    # restart needed to use zsh as default terminal
+    # create separate workspaces for Personal and Work
     brew install --cask evernote
     brew install --cask spotify
     brew install --cask google-chrome-canary
