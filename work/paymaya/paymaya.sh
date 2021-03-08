@@ -8,6 +8,7 @@ function install_work_tools {
     # set to Dark Mode
     brew install --cask microsoft-excel
     brew install --cask postman
+    # set to Dark Mode
 
     brew install awscli
     # aws configure
@@ -42,6 +43,7 @@ function checkout_tools {
     git clone git@code.corp.voyager.ph:mico.delossantos/auto-burndown.git
     git clone git@code.corp.voyager.ph:mico.delossantos/generate_artifacts.git
     git clone git@code.corp.voyager.ph:mico.delossantos/scripts.git
+    git clone git@code.corp.voyager.ph:chris.bello/onboarding.git
 }
 
 function tools {
@@ -68,6 +70,7 @@ function boost_dependencies {
         [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion' >> ~/.zshrc
         source ~/.zshrc
         nvm install --lts 8
+        nvm install --lts 10
         nvm install --lts 12
         nvm alias default 12
     fi
@@ -97,6 +100,21 @@ function checkout_boost_repositories {
     git clone git@code.corp.voyager.ph:Hatch/boost/boost-spiels-fetcher.git
     git clone git@code.corp.voyager.ph:Hatch/boost/lambda-boost-cache-brand-regex.git
     git clone git@code.corp.voyager.ph:Hatch/boost/lambda-boost-cleanup.git
+    git clone git@code.corp.voyager.ph:mico.delossantos/boost-platform.git
+}
+
+function setup_boost {
+    # pushd ~/Work/paymaya/boost-platform/boost
+    # npm login
+    # nvm use 8
+    # npm install
+    generate_boost_keys
+}
+
+function generate_boost_keys {
+    mkdir ~/Work/paymaya/boost-platform/boost-keys
+    openssl genrsa -out ~/Work/paymaya/boost-platform/boost-keys/private.pem 2048
+    openssl rsa -in ~/Work/paymaya/boost-platform/boost-keys/private.pem -outform PEM -pubout -out ~/Work/paymaya/boost-platform/boost-keys/enterprise.pem
 }
 
 function boost_platform {
@@ -105,6 +123,7 @@ function boost_platform {
     pushd ~/Work/paymaya/boost-platform
     checkout_boost_repositories
     update_git_config $(pwd)
+    # setup_boost
     popd
 }
 
@@ -267,21 +286,36 @@ function checkout_voucher_repositories {
     git clone git@code.corp.voyager.ph:Hatch/boost/voucher-worker.git
 }
 
+function setup_voucher {
+    # pushd ~/Work/paymaya/voucher-platform/voucher
+    # npm login
+    # nvm use 10
+    # npm install
+    generate_voucher_keys
+}
+
+function generate_voucher_keys {
+    mkdir ~/Work/paymaya/voucher-platform/voucher-keys
+    openssl genrsa -out ~/Work/paymaya/voucher-platform/voucher-keys/private.pem 2048
+    openssl rsa -in ~/Work/paymaya/voucher-platform/voucher-keys/private.pem -outform PEM -pubout -out ~/Work/paymaya/voucher-platform/voucher-keys/enterprise.pem
+}
+
 function voucher_platform {
     voucher_dependencies
     mkdir ~/Work/paymaya/voucher-platform
     pushd ~/Work/paymaya/voucher-platform
     checkout_voucher_repositories
     update_git_config $(pwd)
+    # setup_voucher
     popd
 }
 
 # initialize
 # install_work_tools
 # should be connected to vpn, pubkey must be uploaded to gitlab
-tools
-boost_platform
-audience_management
-referral_platform
-promo_platform
-voucher_platform
+# tools
+# boost_platform
+# audience_management
+# referral_platform
+# promo_platform
+# voucher_platform
