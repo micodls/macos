@@ -35,6 +35,8 @@ function update_git_config {
 function tools_dependencies {
     brew install python # python 3
     brew install pipenv
+    brew install adoptopenjdk # java
+    brew install jmeter
 }
 
 function checkout_tools {
@@ -59,7 +61,6 @@ function tools {
 function boost_dependencies {
     brew install node
     brew install openssl
-    brew install adoptopenjdk # java
     brew install gnupg
 
     if ! [ -d ~/.nvm ]; then
@@ -282,7 +283,6 @@ function voucher_dependencies {
 
 function checkout_voucher_repositories {
     git clone git@code.corp.voyager.ph:Hatch/boost/voucher-api.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/voucher-data.git
     git clone git@code.corp.voyager.ph:Hatch/boost/voucher-worker.git
 }
 
