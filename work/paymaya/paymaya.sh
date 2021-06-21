@@ -9,6 +9,7 @@ function install_work_tools {
     brew install --cask microsoft-excel
     brew install --cask postman
     # set to Dark Mode
+    brew install --cask docker
 
     brew install awscli
     # aws configure
