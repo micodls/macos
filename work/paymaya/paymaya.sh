@@ -19,6 +19,7 @@ function install_work_tools {
     # TODO: make bash/macro for this
     # references: https://medium.com/@edgar/use-openconnect-as-a-replacement-for-cisco-anyconnect-vpn-client-in-mac-36eab0812718
     # command: sudo openconnect --authgroup=OnePaymaya_VPN --user=mico.delossantos vpn.corp.voyager.ph
+    brew install go
 }
 
 function update_git_config {
