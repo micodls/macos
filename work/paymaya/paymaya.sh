@@ -94,16 +94,17 @@ function boost_dependencies {
 }
 
 function checkout_boost_repositories {
-    git clone git@code.corp.voyager.ph:Hatch/boost/boost.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/boost-adhoc.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/boost-callback-fetcher.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/boost-offline-earn-processor.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/boost-reports-generator.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/boost-rewards-fetcher.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/boost-spiels-fetcher.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/lambda-boost-cache-brand-regex.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/lambda-boost-cleanup.git
-    git clone git@code.corp.voyager.ph:mico.delossantos/boost-platform.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/boost/boost.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/boost/boost-adhoc.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/boost/boost-callback-fetcher.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/boost/boost-database-fetcher.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/boost/boost-offline-earn-processor.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/boost/boost-reports-generator.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/boost/boost-rewards-fetcher.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/boost/boost-spiels-fetcher.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/boost/lambda-boost-cache-brand-regex.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/boost/lambda-boost-cleanup.git
+    git clone git@gitlab.corp.paymaya.com:mico.delossantos/cheat-sheet.git
 }
 
 function setup_boost {
@@ -169,9 +170,8 @@ function am_dependencies {
 }
 
 function checkout_am_repositories {
-    git clone git@code.corp.voyager.ph:Hatch/boost/audience-management.git
-    git clone git@code.corp.voyager.ph:chris.bello/audience-management-tester.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/lambda-customer-tags-processor.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/audience-management-platform/audience-management.git
+    # git clone git@code.corp.voyager.ph:chris.bello/audience-management-tester.git
 }
 
 function audience_management {
@@ -244,11 +244,14 @@ function promo_dependencies {
 }
 
 function checkout_promo_repositories {
-    git clone git@code.corp.voyager.ph:Hatch/boost/promo-analytics-fetcher.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/promo-event-subscriber.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/promo-sqs-reader.git
-    git clone git@code.corp.voyager.ph:mico.delossantos/promo-platform.git
-    git clone git@code.corp.voyager.ph:mico.delossantos/promo-platform-loader.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/promo-platform/promo-analytics-fetcher.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/promo-platform/promo-event-subscriber.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/promo-platform/promo-sqs-reader.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/promo-platform/promo-platform.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/promo-platform/promo-platform-loader.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/cd-repositories/promo-event-subscriber-cd.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/cd-repositories/promo-sqs-reader-cd.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/cd-repositories/promo-analytics-fetcher-cd.git
 }
 
 function promo_platform {
@@ -284,8 +287,8 @@ function voucher_dependencies {
 }
 
 function checkout_voucher_repositories {
-    git clone git@code.corp.voyager.ph:Hatch/boost/voucher-api.git
-    git clone git@code.corp.voyager.ph:Hatch/boost/voucher-worker.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/voucher-platform/voucher-api.git
+    git clone git@gitlab.corp.paymaya.com:core/growth/voucher-platform/voucher-worker.git
 }
 
 function setup_voucher {
